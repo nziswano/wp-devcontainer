@@ -1,30 +1,40 @@
 {
-  "name": "Wordpress Dev Environment",
+  "name": "Wordpress Service",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=vscode-extensions-wp,target=/vscode/.vscode-server/extensions,type=volume",
+    {
+      "type": "volume",
+      "source": "x509stores",
+      "target": "/home/vscode/.dotnet/corefx/cryptography/x509stores"
+    }
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
-        "aaron-bond.better-comments",
+        "42Crunch.vscode-openapi",
+        "adpyke.codesnap",
         "ahmadawais.emoji-log-vscode",
-        "akamud.vscode-caniuse",
         "albert.TabOut",
         "aliariff.auto-add-brackets",
         "AmazonWebServices.aws-toolkit-vscode",
+        "AndrewButson.vscode-openapi-viewer",
+        "apidev.azure-api-center",
+        "azemoh.one-monokai",
         "bmewburn.vscode-intelephense-client",
+        "bruno-api-client.bruno",
+        "christian-kohler.npm-intellisense",
         "christian-kohler.path-intellisense",
-        "chrmarti.regex",
         "claudiosanches.woocommerce",
-        "csstools.postcss",
         "dannyconnell.split-html-attributes",
-        "DavidAnson.vscode-markdownlint",
         "dbaeumer.vscode-eslint",
         "DEVSENSE.composer-php-vscode",
-        "DEVSENSE.phptools-vscode",
+        "devsense.phptools-vscode",
         "DEVSENSE.profiler-php-vscode",
         "donjayamanne.githistory",
-        "ecmel.vscode-html-css",
+        "DotJoshJohnson.xml",
         "EditorConfig.EditorConfig",
         "eriklynd.json-tools",
         "esbenp.prettier-vscode",
@@ -35,40 +45,48 @@
         "GitHub.remotehub",
         "github.vscode-github-actions",
         "GitHub.vscode-pull-request-github",
-        "gitpod.gitpod-remote-ssh",
         "hbenl.vscode-test-explorer",
         "howardzuo.vscode-git-tags",
         "johnpapa.vscode-cloak",
-        "jrebocho.vscode-random",
         "junstyle.php-cs-fixer",
         "meganrogge.template-string-converter",
+        "mermade.openapi-lint",
         "mikestead.dotenv",
         "mrmlnc.vscode-duplicate",
+        "ms-azuretools.azure-dev",
+        "ms-azuretools.vscode-apimanagement",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.vscodeintellicode-csharp",
+        "ms-graph.kiota",
+        "ms-python.autopep8",
+        "ms-python.black-formatter",
+        "ms-python.debugpy",
+        "ms-python.mypy-type-checker",
+        "ms-python.pylint",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
         "mtxr.sqltools-driver-mysql",
         "mtxr.sqltools",
         "naumovs.color-highlight",
         "oderwat.indent-rainbow",
-        "okitavera.vscode-nunjucks-formatter",
         "oliversturm.fix-json",
         "pnp.polacode",
         "pranaygp.vscode-css-peek",
         "qcz.text-power-tools",
         "rangav.vscode-thunder-client",
+        "redhat.ansible",
+        "redhat.vscode-xml",
         "redhat.vscode-yaml",
-        "ronnidc.nunjucks",
         "SebastianBille.iam-legend",
         "shardulm94.trailing-spaces",
         "shd101wyy.markdown-preview-enhanced",
-        "stanislav.vscode-twig",
         "streetsidesoftware.code-spell-checker",
-        "stylelint.vscode-stylelint",
+        "tamasfe.even-better-toml",
         "ThreadHeap.serverless-ide-vscode",
         "vincaslt.highlight-matching-tag",
-        "VisualStudioExptTeam.vscodeintellicode",
-        "xabikos.JavaScriptSnippets",
+        "waderyan.gitblame",
         "xdebug.php-debug",
-        "Zignd.html-css-class-completion",
-        "waderyan.gitblame"
+        "xdebug.php-pack"
       ],
       "settings": {
         "sqltools.connections": [
@@ -93,14 +111,28 @@
     }
   },
   "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
+  "onCreateCommand": "bash .devcontainer/scripts/setup-dotnet-dev-cert.sh",
+  "remoteUser": "vscode",
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/common-utils:2": {
-      "configureZshAsDeaultShell": "true",
-      "upgradePackages": "true"
+      "configureZshAsDefaultShell": true
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "latest",
+      "additionalVersions": "lts",
+      "workloads": "aspire, wasm-tools, wasm-experimental"
+    },
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {},
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
     }
   },
-  "forwardPorts": [
-    8000
-  ]
+  "forwardPorts": [8000]
 }

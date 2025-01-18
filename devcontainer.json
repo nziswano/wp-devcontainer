@@ -88,6 +88,7 @@
         "xdebug.php-debug",
         "xdebug.php-pack"
       ],
+      "recommendations": ["arcanis.vscode-zipfs"],
       "settings": {
         "sqltools.connections": [
           {
@@ -105,9 +106,28 @@
       "files.associations": {
         "*.html": "twig"
       },
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "prettier.resolveGlobalModules": true,
       "emmet.includeLanguages": {
-        "twig": "html"
-      }
+        "twig": "html",
+        "nunjucks": "html"
+      },
+      "emmet.triggerExpansionOnTab": true,
+      "emmet.showAbbreviationSuggestions": true,
+      "emmet.showSuggestionsAsSnippets": true,
+      "editor.formatOnSave": true,
+      "files.autoSave": "afterDelay",
+      "editor.wordWrap": "wordWrapColumn",
+      "terminal.integrated.defaultProfile.osx": "zsh",
+      "workbench.iconTheme": "vscode-icons",
+      "workbench.sideBar.location": "right",
+      "editor.acceptSuggestionOnEnter": "on",
+      "search.exclude": {
+        "**/.yarn": true,
+        "**/.pnp.*": true
+      },
+      "typescript.tsdk": ".yarn/sdks/typescript/lib",
+      "typescript.enablePromptUseWorkspaceTsdk": true
     }
   },
   "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",

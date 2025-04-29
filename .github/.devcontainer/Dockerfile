@@ -1,8 +1,8 @@
 ARG VARIANT=8
 ARG USERNAME=vscode
 ARG DELTA_VERSION=0.18.2
-ARG NODE_VERSION="lts/*"
-ARG NODE_MODULES="typescript aws-cdk prettier cdk-dia prettier aws-cdk joplin"
+ARG NODE_VERSION_LTS="lts/*"
+ARG NODE_MODULES="typescript prettier prettier aws-cdk"
 
 FROM mcr.microsoft.com/vscode/devcontainers/php:${VARIANT}
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
@@ -58,7 +58,7 @@ RUN sudo wget -O phive.phar "https://phar.io/releases/phive.phar" \
 
 # [Choice] Node.js version: none, lts/*, 16, 14, 12, 1
 LABEL build.step.node=install_node
-RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION_LTS}" 2>&1
 RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g ${NODE_MODULES}" 2>&1
 
 LABEL build.step.sam=install_sam

@@ -28,6 +28,7 @@ services:
       - WP_DEBUG=${WP_DEBUG_CONFIG}
       - SSH_SIGNING_KEY=${SSH_SIGNING_KEY}
   wordpressdb:
+    platform: linux/arm64
     image: mariadb
     restart: unless-stopped
     volumes:
@@ -39,6 +40,7 @@ services:
       MARIADB_PASSWORD: ${MYSQL_PASSWORD}
       MARIADB_DATABASE: ${MYSQL_DATABASE}
   adminer:
+    platform: linux/arm64
     image: adminer
     ports:
       - 9090:9090

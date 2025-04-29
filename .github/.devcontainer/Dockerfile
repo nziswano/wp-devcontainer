@@ -1,6 +1,4 @@
 ARG VARIANT=8
-ARG USERNAME=vscode
-ARG DELTA_VERSION=0.18.2
 
 FROM mcr.microsoft.com/devcontainers/php:${VARIANT}
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
@@ -66,6 +64,7 @@ RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \
   && chown -R $USERNAME /home/$USERNAME/.vscode-server
 
 LABEL build.step.delta=build_delta
+ARG DELTA_VERSION=0.18.2
 RUN wget https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_arm64.deb \
   && sudo dpkg -i git-delta_${DELTA_VERSION}_arm64.deb \
   && rm git-delta_${DELTA_VERSION}_arm64.deb

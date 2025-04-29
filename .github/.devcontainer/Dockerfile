@@ -2,7 +2,7 @@ ARG VARIANT=8
 ARG USERNAME=vscode
 ARG DELTA_VERSION=0.18.2
 
-FROM mcr.microsoft.com/devcontainers/php:8:${VARIANT}
+FROM mcr.microsoft.com/devcontainers/php:${VARIANT}
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
 
 LABEL build.step.base=install_base

@@ -1,11 +1,7 @@
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        VARIANT: "8"
-        NODE_VERSION: "lts/*"
+    platform: linux/arm64
+    image: ghcr.io/nziswano/wordpress-dev:latest
     volumes:
       - ..:/workspace:cached
       - vscode-extension-wp:/vscode/.vscode-server/extensions

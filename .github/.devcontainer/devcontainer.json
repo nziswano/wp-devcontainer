@@ -1,8 +1,10 @@
 {
   "name": "Wordpress Service",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspace",
+  "build": {
+    "context": ".",
+    "dockerfile": "./Dockerfile",
+    "cacheFrom": "ghcr.io/nziswano/wordpress-dev:latest"
+  },
   "mounts": [
     "source=vscode-extensions-wp,target=/vscode/.vscode-server/extensions,type=volume",
     {
@@ -87,7 +89,9 @@
         "xdebug.php-debug",
         "xdebug.php-pack"
       ],
-      "recommendations": ["arcanis.vscode-zipfs"],
+      "recommendations": [
+        "arcanis.vscode-zipfs"
+      ],
       "settings": {
         "sqltools.connections": [
           {
@@ -139,7 +143,9 @@
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
-      "configureZshAsDefaultShell": true
+      "configureZshAsDefaultShell": "true",
+      "installOhMyZsh": "true",
+      "upgradePackages": "true"
     },
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/github-cli:1": {
@@ -149,14 +155,16 @@
     "ghcr.io/devcontainers/features/dotnet:2": {
       "version": "latest",
       "additionalVersions": "lts",
-      "workloads": "aspire, wasm-tools, wasm-experimental"
+      "workloads": "aspire"
     },
     "ghcr.io/devcontainers/features/aws-cli:1": {},
     "ghcr.io/devcontainers/features/azure-cli:1": {},
     "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
+      "version": "3.12"
     }
   },
-  "forwardPorts": [8000]
+  "forwardPorts": [
+    8000
+  ]
 }

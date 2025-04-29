@@ -46,6 +46,26 @@ services:
       - 9090:9090
     env_file:
       - .env
+  civicrm:
+    hostname: example
+    image: civicrm/civicrm:latest
+    ports:
+      - 8760:80 # CiviCRM will be available on port 8760.
+    restart: unless-stopped
+    volumes:
+      - private:/var/www/html/private
+      - public:/var/www/html/public
+      - ext:/var/www/html/ext
+    environment:
+      CIVICRM_DB_HOST: ${CIVICRM_DB_HOST}
+      CIVICRM_DB_PORT: ${CIVICRM_DB_PORT}
+      CIVICRM_DB_NAME: ${CIVICRM_DB_NAME}
+      CIVICRM_DB_USER: ${CIVICRM_DB_USER}
+      CIVICRM_DB_PASSWORD: ${CIVICRM_DB_PASSWORD}
+      CIVICRM_UF_BASEURL: ${CIVICRM_UF_BASEURL}
 volumes:
   mariadb-data: null
   vscode-extension-wp: null
+  private: null
+  public: null
+  ext: null

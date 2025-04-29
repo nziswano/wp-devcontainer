@@ -1,10 +1,8 @@
 ARG VARIANT=8
 ARG USERNAME=vscode
 ARG DELTA_VERSION=0.18.2
-ARG NODE_VERSION_LTS="lts/*"
-ARG NODE_MODULES="typescript prettier prettier aws-cdk"
 
-FROM mcr.microsoft.com/vscode/devcontainers/php:${VARIANT}
+FROM mcr.microsoft.com/devcontainers/php:8:${VARIANT}
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
 
 LABEL build.step.base=install_base
@@ -55,11 +53,6 @@ RUN sudo wget -O phive.phar "https://phar.io/releases/phive.phar" \
   && sudo rm phive.phar.asc \
   && sudo chmod +x phive.phar \
   && sudo mv phive.phar /usr/local/bin/phive && phive version
-
-# [Choice] Node.js version: none, lts/*, 16, 14, 12, 1
-LABEL build.step.node=install_node
-RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION_LTS}" 2>&1
-RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g ${NODE_MODULES}" 2>&1
 
 LABEL build.step.sam=install_sam
 RUN curl -L "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-arm64.zip" -o "awssam.zip" \

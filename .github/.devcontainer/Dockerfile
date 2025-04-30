@@ -9,7 +9,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   vim fzf bat httpie fd-find tmux \
   fonts-powerline fonts-firacode \
   curl unzip watchman \
-  jq yq shellcheck git-extras libicu-dev pkg-config \
+  jq yq shellcheck git-extras libicu-dev libzip-dev pkg-config \
   mariadb-client graphviz python3-full pipx \
   && locale-gen en_US.UTF-8
 
@@ -32,7 +32,7 @@ RUN curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
   && sudo apt update && sudo apt install 1password-cli
 
 LABEL build.step.php=install_php
-RUN docker-php-ext-install mysqli pdo pdo_mysql intl zip libxml mbstring curl bcmath soap
+RUN docker-php-ext-install mysqli pdo pdo_mysql intl zip bcmath soap
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   && sudo chmod +x wp-cli.phar \

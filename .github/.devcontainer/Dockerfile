@@ -9,7 +9,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   vim fzf bat httpie fd-find tmux \
   fonts-powerline fonts-firacode \
   curl unzip watchman \
-  jq yq shellcheck git-extras \
+  jq yq shellcheck git-extras libicu-dev pkg-config \
   mariadb-client graphviz python3-full pipx \
   && locale-gen en_US.UTF-8
 

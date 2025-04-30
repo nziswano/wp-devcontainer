@@ -32,7 +32,7 @@ RUN curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
   && sudo apt update && sudo apt install 1password-cli
 
 LABEL build.step.php=install_php
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql intl zip libxml mbstring curl bcmath soap
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   && sudo chmod +x wp-cli.phar \

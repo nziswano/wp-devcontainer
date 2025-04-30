@@ -10,22 +10,6 @@ services:
     network_mode: service:wordpressdb
     depends_on:
       - wordpressdb
-    environment:
-      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
-      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
-      - WORDPRESS_DB_PASSWORD=${WORDPRESS_DB_PASSWORD}
-      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME}
-      - AUTH_KEY=${AUTH_KEY}
-      - SECURE_AUTH_KEY=${SECURE_AUTH_KEY}
-      - LOGGED_IN_KEY=${LOGGED_IN_KEY}
-      - NONCE_KEY=${NONCE_KEY}
-      - AUTH_SALT=${AUTH_SALT}
-      - SECURE_AUTH_SALT=${SECURE_AUTH_SALT}
-      - LOGGED_IN_SALT=${LOGGED_IN_SALT}
-      - NONCE_SALT=${NONCE_SALT}
-      - MY_KEY=${MY_KEY}
-      - WP_DEBUG=${WP_DEBUG_CONFIG}
-      - SSH_SIGNING_KEY=${SSH_SIGNING_KEY}
   wordpressdb:
     platform: linux/arm64
     image: mariadb
@@ -48,13 +32,6 @@ services:
       - private:/var/www/html/private
       - public:/var/www/html/public
       - ext:/var/www/html/ext
-    environment:
-      CIVICRM_DB_HOST: ${CIVICRM_DB_HOST}
-      CIVICRM_DB_PORT: ${CIVICRM_DB_PORT}
-      CIVICRM_DB_NAME: ${CIVICRM_DB_NAME}
-      CIVICRM_DB_USER: ${CIVICRM_DB_USER}
-      CIVICRM_DB_PASSWORD: ${CIVICRM_DB_PASSWORD}
-      CIVICRM_UF_BASEURL: ${CIVICRM_UF_BASEURL}
 volumes:
   mariadb-data: null
   vscode-extension-wp: null

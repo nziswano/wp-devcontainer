@@ -131,6 +131,7 @@
   },
   "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
   "onCreateCommand": "bash .devcontainer/scripts/setup-dotnet-dev-cert.sh",
+  "postAttachCommand": "bash -i .devcontainer/scripts/post-attach.sh",
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -xe
 # Change ownership of the .dotnet directory to the vscode user (to avoid permission errors)
 sudo chown -R vscode:vscode /home/vscode/.dotnet
 

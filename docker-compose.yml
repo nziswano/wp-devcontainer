@@ -1,7 +1,8 @@
 services:
   app:
+    env_file: devcontainer.env
     platform: linux/arm64
-    image: ghcr.io/nziswano/wordpress-dev:latest
+    image: ghcr.io/nziswano/wp-devcontainer:latest
     volumes:
       - ..:/workspace:cached
       - vscode-extension-wp:/vscode/.vscode-server/extensions
@@ -9,8 +10,6 @@ services:
     network_mode: service:wordpressdb
     depends_on:
       - wordpressdb
-    env_file:
-      - .env
     environment:
       - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
       - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
@@ -34,18 +33,11 @@ services:
     volumes:
       - ./scripts/test-db.sql:/docker-entrypoint-initdb.d/test-db.sql
       - mariadb-data:/var/lib/mysql
-    environment:
-      MARIADB_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MARIADB_USER: ${MYSQL_USER}
-      MARIADB_PASSWORD: ${MYSQL_PASSWORD}
-      MARIADB_DATABASE: ${MYSQL_DATABASE}
   adminer:
     platform: linux/arm64
     image: adminer
     ports:
       - 9090:9090
-    env_file:
-      - .env
   civicrm:
     hostname: example
     image: civicrm/civicrm:latest

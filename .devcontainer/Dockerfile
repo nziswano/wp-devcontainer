@@ -70,9 +70,8 @@ RUN wget https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/
   && rm git-delta_${DELTA_VERSION}_arm64.deb
 
 LABEL build.step.node=build_nodejs
-ARG NODE_VERSION_LTS="lts/*"
-ARG NODE_MODULES="typescript prettier"
-RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION_LTS}" 2>&1
+ARG NODE_MODULES="typescript prettier aws-cdk"
+RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install --lts --latest-npm --default --save" 2>&1
 RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g ${NODE_MODULES}" 2>&1
 
 LABEL build.step.cleanup=build_cleanup

@@ -28,6 +28,9 @@ RUN curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
   sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg \
   && sudo apt update && sudo apt install 1password-cli
 
+LABEL build.step.starship=build_starship
+RUN sh -c "curl -sS https://starship.rs/install.sh | sh -s -- --yes" 2>&1
+
 LABEL build.step.php=install_php
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends \

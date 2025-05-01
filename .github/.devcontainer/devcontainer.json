@@ -17,43 +17,20 @@
     "vscode": {
       "extensions": [
         "aliariff.auto-add-brackets",
-        "AmazonWebServices.aws-toolkit-vscode",
-        "apidev.azure-api-center",
         "bruno-api-client.bruno",
-        "claudiosanches.woocommerce",
         "dbaeumer.vscode-eslint",
-        "DEVSENSE.composer-php-vscode",
-        "devsense.phptools-vscode",
-        "DEVSENSE.profiler-php-vscode",
         "esbenp.prettier-vscode",
         "formulahendry.auto-close-tag",
         "formulahendry.auto-rename-tag",
-        "GitHub.copilot-chat",
-        "GitHub.copilot",
-        "junstyle.php-cs-fixer",
         "meganrogge.template-string-converter",
         "mikestead.dotenv",
-        "ms-azuretools.azure-dev",
-        "ms-azuretools.vscode-apimanagement",
-        "ms-azuretools.vscode-docker",
-        "ms-dotnettools.csdevkit",
-        "ms-python.autopep8",
-        "ms-python.black-formatter",
-        "ms-python.debugpy",
-        "ms-python.mypy-type-checker",
-        "ms-python.pylint",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
         "mtxr.sqltools-driver-mysql",
         "mtxr.sqltools",
         "qcz.text-power-tools",
         "rangav.vscode-thunder-client",
-        "redhat.ansible",
         "redhat.vscode-yaml",
-        "SebastianBille.iam-legend",
         "sleistner.vscode-fileutils",
         "streetsidesoftware.code-spell-checker",
-        "ThreadHeap.serverless-ide-vscode",
         "xdebug.php-debug"
       ],
       "settings": {
@@ -102,9 +79,6 @@
       "typescript.enablePromptUseWorkspaceTsdk": true
     }
   },
-  "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
-  "onCreateCommand": "bash .devcontainer/scripts/setup-dotnet-dev-cert.sh",
-  "postAttachCommand": "bash -i .devcontainer/scripts/post-attach.sh",
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
@@ -116,20 +90,6 @@
     "ghcr.io/devcontainers/features/github-cli:1": {
       "installDirectlyFromGitHubRelease": true,
       "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/dotnet:2": {
-      "version": "latest",
-      "additionalVersions": "lts",
-      "workloads": "aspire"
-    },
-    "ghcr.io/devcontainers/features/aws-cli:1": {},
-    "ghcr.io/devcontainers/features/azure-cli:1": {},
-    "ghcr.io/devcontainers/features/node:1": {},
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.12"
     }
-  },
-  "forwardPorts": [
-    8000
-  ]
+  }
 }

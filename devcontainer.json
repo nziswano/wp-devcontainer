@@ -2,5 +2,45 @@
   "name": "Wordpress Development Service",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspace"
+  "workspaceFolder": "/workspace",
+  "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
+  "onCreateCommand": "bash .devcontainer/scripts/setup-dotnet-dev-cert.sh",
+  "postAttachCommand": "bash -i .devcontainer/scripts/post-attach.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "AmazonWebServices.aws-toolkit-vscode",
+        "GitHub.copilot-chat",
+        "GitHub.copilot",
+        "ms-azuretools.azure-dev",
+        "ms-azuretools.vscode-apimanagement",
+        "ms-azuretools.vscode-docker",
+        // "ms-dotnettools.csdevkit",
+        // "ms-python.autopep8",
+        // "ms-python.black-formatter",
+        // "ms-python.debugpy",
+        // "ms-python.mypy-type-checker",
+        // "ms-python.pylint",
+        // "ms-python.python",
+        // "ms-python.vscode-pylance",
+        "redhat.ansible"
+        // "SebastianBille.iam-legend",
+        // "ThreadHeap.serverless-ide-vscode",
+        // "xdebug.php-debug"
+      ]
+    }
+  },
+  "features": {
+    // "ghcr.io/devcontainers/features/dotnet:2": {
+    //   "version": "latest",
+    //   "additionalVersions": "lts",
+    //   "workloads": "aspire"
+    // },
+    // "ghcr.io/devcontainers/features/aws-cli:1": {},
+    // "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+    // "ghcr.io/devcontainers/features/python:1": {
+    //   "version": "3.12"
+    // }
+  }
 }

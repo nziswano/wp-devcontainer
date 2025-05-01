@@ -6,12 +6,8 @@ ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
 LABEL build.step.base=install_base
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends locales universal-ctags \
-  vim fzf bat httpie fd-find tmux \
-  fonts-powerline fonts-firacode \
-  curl unzip watchman \
-  jq yq shellcheck git-extras \
-  libicu-dev libzip-dev pkg-config libxml2-dev \
-  mariadb-client graphviz python3-full pipx \
+  vim fzf bat httpie fd-find tmux fonts-powerline fonts-firacode \
+  curl unzip watchman jq yq shellcheck git-extras \
   && locale-gen en_US.UTF-8
 
 LABEL build.step.apps=install_apps
@@ -33,7 +29,13 @@ RUN curl -sS https://downloads.1password.com/linux/keys/1password.asc | \
   && sudo apt update && sudo apt install 1password-cli
 
 LABEL build.step.php=install_php
-RUN docker-php-ext-install mysqli pdo pdo_mysql intl zip bcmath soap
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+  && apt-get -y install --no-install-recommends \
+  mariadb-client libicu-dev libzip-dev pkg-config libxml2-dev imagemagick \
+  libgd-dev libfreetype-dev libpng-dev libjpeg62-turbo-dev ghostscript \
+  && docker-php-ext-install mysqli pdo pdo_mysql intl zip bcmath soap sockets exif
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+  && docker-php-ext-install -j$(nproc) gd
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   && sudo chmod +x wp-cli.phar \

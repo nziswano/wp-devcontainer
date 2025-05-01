@@ -18,3 +18,8 @@
 
 1. Open vscode. `code .` or via menu in vs code.
 1. Start vscode devcontainer
+
+## Configure docker container
+
+- [Docker Hub PHP Image](https://hub.docker.com/_/php/)
+- [Docker PHP Extension Installer](https://github.com/mlocati/docker-php-extension-installer)

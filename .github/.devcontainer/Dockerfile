@@ -36,15 +36,12 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && docker-php-ext-install mysqli pdo pdo_mysql intl zip bcmath soap sockets exif
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install -j$(nproc) gd
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN install-php-extensions imagick solr @composer
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   && sudo chmod +x wp-cli.phar \
   && sudo mv wp-cli.phar /usr/local/bin/wp && wp --info
-
-# Install composer
-RUN sudo curl -sSL https://getcomposer.org/installer | php \
-  && sudo chmod +x composer.phar \
-  && sudo mv composer.phar /usr/local/bin/composer
 
 # Install PHIVE
 RUN sudo wget -O phive.phar "https://phar.io/releases/phive.phar" \

@@ -69,5 +69,12 @@ RUN wget https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/
   && sudo dpkg -i git-delta_${DELTA_VERSION}_arm64.deb \
   && rm git-delta_${DELTA_VERSION}_arm64.deb
 
+LABEL build.step.node=build_nodejs
+ARG NODE_VERSION_LTS="lts/*"
+ARG NODE_MODULES="typescript prettier"
+RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION_LTS}" 2>&1
+RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g ${NODE_MODULES}" 2>&1
+
+LABEL build.step.cleanup=build_cleanup
 RUN sudo apt-get autoremove -y && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/*

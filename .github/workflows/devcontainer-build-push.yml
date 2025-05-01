@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - ".github/**"
 env:
   REGISTRY: ghcr.io
 
@@ -40,5 +38,4 @@ jobs:
           imageName: ${{ env.REGISTRY }}/${{ github.repository }}
           cacheFrom: ${{ env.REGISTRY }}/${{ github.repository }}
           push: always
-          subFolder: ".github"
           platform: linux/arm64

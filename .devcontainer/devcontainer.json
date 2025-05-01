@@ -26,6 +26,7 @@
         "formulahendry.auto-rename-tag",
         "meganrogge.template-string-converter",
         "mikestead.dotenv",
+        "ms-azuretools.vscode-docker",
         "mtxr.sqltools-driver-mysql",
         "mtxr.sqltools",
         "qcz.text-power-tools",

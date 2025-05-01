@@ -3,7 +3,7 @@
   "build": {
     "context": ".",
     "dockerfile": "./Dockerfile",
-    "cacheFrom": "ghcr.io/nziswano/wordpress-dev:local"
+    "cacheFrom": "ghcr.io/nziswano/wp-devcontainer:latest"
   },
   "mounts": [
     "source=vscode-extensions-wp,target=/vscode/.vscode-server/extensions,type=volume",

@@ -5,9 +5,8 @@
     "dockerfile": "./Dockerfile",
     "cacheFrom": "ghcr.io/nziswano/wp-devcontainer:latest"
   },
-  "postCreateCommand": "bash .devcontainer/scripts/post-create.sh",
-  "postAttachCommand": "bash -i .devcontainer/scripts/post-attach.sh",
   "mounts": [
+    "source=profile-wp,target=/vscode/.vscode-server/profile,type=volume",
     "source=vscode-extensions-wp,target=/vscode/.vscode-server/extensions,type=volume",
     {
       "type": "volume",

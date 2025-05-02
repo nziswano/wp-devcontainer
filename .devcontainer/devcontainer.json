@@ -5,15 +5,6 @@
     "dockerfile": "./Dockerfile",
     "cacheFrom": "ghcr.io/nziswano/wp-devcontainer:latest"
   },
-  "mounts": [
-    "source=profile-wp,target=/vscode/.vscode-server/profile,type=volume",
-    "source=vscode-extensions-wp,target=/vscode/.vscode-server/extensions,type=volume",
-    {
-      "type": "volume",
-      "source": "x509stores",
-      "target": "/home/vscode/.dotnet/corefx/cryptography/x509stores"
-    }
-  ],
   "customizations": {
     "vscode": {
       "extensions": [

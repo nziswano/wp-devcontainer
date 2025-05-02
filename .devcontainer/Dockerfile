@@ -35,10 +35,10 @@ LABEL build.step.php=install_php
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y install --no-install-recommends \
   mariadb-client libicu-dev libzip-dev pkg-config libxml2-dev imagemagick \
-  libgd-dev libfreetype-dev libpng-dev libjpeg62-turbo-dev ghostscript \
-  && docker-php-ext-install mysqli pdo pdo_mysql intl zip bcmath soap sockets exif
+  libgd-dev libfreetype-dev libpng-dev libjpeg62-turbo-dev ghostscript
+
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-  && docker-php-ext-install -j$(nproc) gd
+  && docker-php-ext-install -j$(nproc) gd mysqli pdo pdo_mysql intl zip bcmath soap sockets exif
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 RUN install-php-extensions imagick solr @composer
 
@@ -55,12 +55,7 @@ RUN sudo wget -O phive.phar "https://phar.io/releases/phive.phar" \
   && sudo chmod +x phive.phar \
   && sudo mv phive.phar /usr/local/bin/phive && phive version
 
-LABEL build.step.sam=install_sam
-RUN curl -L "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-arm64.zip" -o "awssam.zip" \
-  && unzip awssam.zip -d sam-install \
-  && sudo ./sam-install/install \
-  && rm awssam.zip && sam --version
-
+LABEL build.step.delta=vscode_extensions
 # Store vscode extensions between builds
 ARG USERNAME=vscode
 RUN mkdir -p /home/$USERNAME/.vscode-server/extensions \

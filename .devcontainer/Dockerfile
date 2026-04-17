@@ -102,7 +102,7 @@ RUN set -eux; \
     ARCH=$(dpkg --print-architecture); \
     wget -q https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_${ARCH}.deb -O /tmp/git-delta.deb && \
     sudo dpkg -i /tmp/git-delta.deb && \
-    rm /tmp/git-delta.deb || echo "git-delta installation failed, continuing..."
+    rm /tmp/git-delta.deb
 
 LABEL build.step.git-tools=build_git_tools
 RUN set -eux; \

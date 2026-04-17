@@ -1,8 +1,8 @@
 ARG VARIANT=8
-ARG USERNAME=vscode
-ARG DELTA_VERSION=0.18.2
 
 FROM mcr.microsoft.com/devcontainers/php:${VARIANT}
+ARG DELTA_VERSION=0.18.2
+ARG USERNAME=vscode
 ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev"
 
 LABEL build.step.base=install_base
@@ -118,6 +118,9 @@ RUN set -eux; \
     tar -xf /tmp/lazygit.tar.gz -C /tmp lazygit && \
     sudo install /tmp/lazygit /usr/local/bin/ && \
     rm -rf /tmp/lazygit.tar.gz /tmp/lazygit
+
+LABEL build.step.misenplace=install_misenplace
+RUN su vscode -c "curl https://mise.jdx.dev/install.sh | sh" 2>&1
 
 LABEL build.step.misenplace_node=setup_node
 RUN mkdir -p /home/$USERNAME/vscode \

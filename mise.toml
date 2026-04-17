@@ -1,17 +1,16 @@
-[tools]
-node = 'lts'
-actionlint = "latest"
-pnpm = "10.32.1"
+min_version = "2024.9.5"
 
-[settings]
-experimental = true
+[tools]
+node = "latest"
+"npm:@devcontainers/cli" = "latest"
 
 [env]
 _.path = ['{{config_root}}/node_modules/.bin']
-_.fnox-env = { tools = true }
 PROJECT_NAME = "{{ config_root | basename }}"
 BIN_PATH = "{{ config_root }}/node_modules/.bin"
 NODE_ENV = "{{ env.NODE_ENV | default(value='development') }}"
+GITHUB_USERNAME="johanmartindev"
+_.fnox-env = { tools = true }
 
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"

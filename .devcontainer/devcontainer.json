@@ -3,8 +3,8 @@
   "build": {
     "context": ".",
     "dockerfile": "./Dockerfile",
-    "cacheFrom": "ghcr.io/nziswano/wp-devcontainer:latest",
-    "cacheTo": "ghcr.io/nziswano/wp-devcontainer:latest",
+    "cacheFrom": "type=registry,ref=ghcr.io/nziswano/wp-devcontainer:latest",
+    "cacheTo": "type=registry,ref=ghcr.io/nziswano/wp-devcontainer:latest,mode=max",
     "options": [
       "--sbom=${localEnv:DEVCONTAINER_SBOM:false}",
       "--provenance=${localEnv:DEVCONTAINER_PROVENANCE:false}"

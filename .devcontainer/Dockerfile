@@ -123,7 +123,7 @@ LABEL build.step.misenplace=install_misenplace
 RUN su vscode -c "curl https://mise.jdx.dev/install.sh | sh" 2>&1
 
 LABEL build.step.misenplace_node=setup_node
-RUN mkdir -p /home/$USERNAME/vscode \
+RUN mkdir -p /home/$USERNAME \
     && printf "typescript\nprettier\n@openai/codex\n@github/copilot\n@google/gemini-cli\n" > /home/$USERNAME/.default-npm-packages
 RUN chown $USERNAME:$USERNAME /home/$USERNAME/.default-npm-packages
 RUN su $USERNAME -c "eval \"\$(/home/$USERNAME/.local/bin/mise activate bash)\" && /home/$USERNAME/.local/bin/mise use -g fnox" 2>&1

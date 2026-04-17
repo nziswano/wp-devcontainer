@@ -9,7 +9,6 @@ _.path = ['{{config_root}}/node_modules/.bin']
 PROJECT_NAME = "{{ config_root | basename }}"
 BIN_PATH = "{{ config_root }}/node_modules/.bin"
 NODE_ENV = "{{ env.NODE_ENV | default(value='development') }}"
-GITHUB_USERNAME="johanmartindev"
 _.fnox-env = { tools = true }
 
 [plugins]

@@ -4,7 +4,7 @@
     "context": ".",
     "dockerfile": "./Dockerfile",
     "cacheFrom": "ghcr.io/nziswano/wp-devcontainer:latest",
-    "cacheTo": "ghcr.io/nziswano/wp-devcontainer:latest:latest",
+    "cacheTo": "ghcr.io/nziswano/wp-devcontainer:latest",
     "options": [
       "--sbom=${localEnv:DEVCONTAINER_SBOM:false}",
       "--provenance=${localEnv:DEVCONTAINER_PROVENANCE:false}"

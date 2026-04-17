@@ -1,0 +1,15 @@
+min_version = "2024.9.5"
+
+[tools]
+node = "latest"
+"npm:@devcontainers/cli" = "latest"
+
+[env]
+_.path = ['{{config_root}}/node_modules/.bin']
+PROJECT_NAME = "{{ config_root | basename }}"
+BIN_PATH = "{{ config_root }}/node_modules/.bin"
+NODE_ENV = "{{ env.NODE_ENV | default(value='development') }}"
+_.fnox-env = { tools = true }
+
+[plugins]
+fnox-env = "https://github.com/jdx/mise-env-fnox"

@@ -1,0 +1,17 @@
+name: Delete old container images
+on:
+  workflow_dispatch:
+
+jobs:
+  delete_versions:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Delete old images
+        uses: quartx-analytics/ghcr-cleaner@v1
+        with:
+          owner-type: user
+          token: ${{ secrets.API_ACCESS }}
+          delete-untagged: true
+          repository-name: ${{ github.repository }}
